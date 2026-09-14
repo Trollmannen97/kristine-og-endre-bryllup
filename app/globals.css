@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "../vendor/shadcn-tailwind-4.13.0.css";
+
+:root {
+  --background: #f2eee6; --foreground: #161613; --card: #f8f5ee; --card-foreground: #161613;
+  --popover: #f8f5ee; --popover-foreground: #161613; --primary: #161613; --primary-foreground: #fff;
+  --secondary: #e8e3da; --secondary-foreground: #161613; --muted: #e8e3da; --muted-foreground: #69665f;
+  --accent: #e8e3da; --accent-foreground: #161613; --destructive: #8b1d1d; --border: #c9c3b9;
+  --input: #aaa49a; --ring: #161613; --radius: 0;
+}
+
+@theme inline {
+  --color-background: var(--background); --color-foreground: var(--foreground); --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground); --color-popover: var(--popover); --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary); --color-primary-foreground: var(--primary-foreground); --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground); --color-muted: var(--muted); --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent); --color-accent-foreground: var(--accent-foreground); --color-destructive: var(--destructive);
+  --color-border: var(--border); --color-input: var(--input); --color-ring: var(--ring);
+  --font-sans: Arial, Helvetica, sans-serif; --font-serif: Georgia, "Times New Roman", serif;
+}
+
+* { border-color: var(--border); }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: Arial, Helvetica, sans-serif; }
+.envelope-fold { clip-path: polygon(0 0, 50% 54%, 100% 0); background: #eee9df; border-top: 1px solid rgba(255,255,255,.8); filter: drop-shadow(0 4px 4px rgba(0,0,0,.18)); }
+.invitation-enter { animation: reveal .75s cubic-bezier(.22,1,.36,1) both; }
+@keyframes reveal { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .invitation-enter { animation: none; } }
+
