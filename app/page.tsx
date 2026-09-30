@@ -20,18 +20,18 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#0b0b0a] text-[#f4f0e8]">
-      <section className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
-        <img src="/wedding-hero.png" alt="Et par går sammen gjennom et nordisk landskap" className="absolute inset-0 -z-20 h-full w-full object-cover grayscale" />
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.2)_45%,rgba(0,0,0,.82))]" />
+      <section className="relative isolate flex min-h-[100svh] flex-col overflow-hidden lg:min-h-[900px]">
+        <img src="/photos/kristine-endre-portrett.jpg" alt="Kristine og Endre smiler til hverandre ute i naturen" width={1179} height={1457} fetchPriority="high" className="absolute inset-0 -z-20 h-[58%] w-full object-cover object-[center_35%] lg:left-auto lg:h-full lg:w-[58%]" />
+        <div className="absolute inset-0 -z-10 hero-shade" />
         <header className="flex items-center justify-between px-6 py-6 sm:px-10">
           <span className="font-serif text-lg tracking-[0.08em]">K &amp; E</span>
           <span className="text-xs uppercase tracking-[0.28em] text-white/70">Vi skal gifte oss</span>
         </header>
-        <div className="flex flex-1 flex-col items-center justify-center px-5 py-12 text-center">
+        <div className="flex flex-1 flex-col items-center justify-end px-5 pb-12 pt-48 text-center lg:w-[47%] lg:justify-center lg:px-12 lg:py-16">
           <p className="mb-4 text-xs uppercase tracking-[0.42em] text-white/65">En invitasjon til</p>
-          <h1 className="font-serif text-[clamp(3.5rem,10vw,8.5rem)] font-normal leading-[0.85] tracking-[-0.055em]">Kristine <span className="block italic">&amp; Endre</span></h1>
+          <h1 className="font-serif text-[clamp(3.5rem,7vw,7.5rem)] font-normal leading-[0.85] tracking-[-0.055em]">Kristine <span className="block italic">&amp; Endre</span></h1>
           <p className="mt-7 text-sm uppercase tracking-[0.3em] text-white/75">Dato og sted kommer</p>
-          <button onClick={() => setOpened(true)} className="group mt-12 flex flex-col items-center gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white" aria-label="Åpne bryllupsinvitasjonen">
+          <button onClick={() => { setOpened(true); requestAnimationFrame(() => document.getElementById("invitation")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })); }} className="group mt-12 flex flex-col items-center gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white" aria-label="Åpne bryllupsinvitasjonen">
             <span className="envelope relative block h-32 w-48 transition-transform duration-500 group-hover:-translate-y-2 sm:h-36 sm:w-56">
               <span className="absolute inset-0 border border-white/70 bg-[#d8d2c7]/95 shadow-2xl" />
               <span className="envelope-fold absolute inset-0" />
@@ -42,8 +42,34 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-[#f2eee6] px-6 py-16 text-[#161613] sm:px-10 sm:py-24" aria-labelledby="moments-title">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-black/55">Livet sammen</p>
+              <h2 id="moments-title" className="mt-4 font-serif text-4xl tracking-[-0.04em] sm:text-6xl">Små øyeblikk. Stor kjærlighet.</h2>
+            </div>
+            <p className="max-w-xs font-serif text-lg leading-relaxed text-black/65">Fra turer ved havet til dager vi aldri vil glemme. Nå gleder vi oss til å feire med dere.</p>
+          </div>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-7">
+            <figure className="col-span-2 sm:col-span-1">
+              <img src="/photos/kristine-endre-sommer.jpg" alt="Kristine og Endre holder hender på en sommerdag" width={900} height={1200} loading="lazy" className="aspect-[3/4] w-full object-cover" />
+              <figcaption className="mt-4 text-xs uppercase tracking-[0.2em] text-black/55">Hånd i hånd</figcaption>
+            </figure>
+            <figure className="sm:pt-12">
+              <img src="/photos/kristine-endre-strand.jpg" alt="Kristine og Endre holder rundt hverandre på stranden" width={978} height={1200} loading="lazy" className="aspect-[3/4] w-full object-cover" />
+              <figcaption className="mt-4 text-xs uppercase tracking-[0.2em] text-black/55">Ved havet</figcaption>
+            </figure>
+            <figure>
+              <img src="/photos/kristine-endre-tur.jpg" alt="Kristine og Endre smiler sammen på tur ved svabergene" width={967} height={1200} loading="lazy" className="aspect-[3/4] w-full object-cover" />
+              <figcaption className="mt-4 text-xs uppercase tracking-[0.2em] text-black/55">På eventyr sammen</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
       {opened && (
-        <section className="invitation-enter relative bg-[#f2eee6] px-4 py-16 text-[#161613] sm:px-8 sm:py-24">
+        <section id="invitation" className="invitation-enter relative bg-[#f2eee6] px-4 py-16 text-[#161613] sm:px-8 sm:py-24">
           <div className="mx-auto max-w-5xl border border-black/20 bg-[#f8f5ee] shadow-[0_30px_80px_rgba(0,0,0,.25)]">
             <Tabs defaultValue="invitation" className="gap-0">
               <TabsList variant="line" className="mx-auto h-auto gap-6 border-b border-black/10 px-5 py-5 sm:gap-12">

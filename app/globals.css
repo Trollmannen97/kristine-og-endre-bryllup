@@ -28,3 +28,6 @@ body { margin: 0; background: var(--background); color: var(--foreground); font-
 @keyframes reveal { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .invitation-enter { animation: none; } }
 
+
+.hero-shade { background: linear-gradient(180deg, rgba(11,11,10,.2), rgba(11,11,10,.05) 30%, rgba(11,11,10,.65) 48%, #0b0b0a 60%); }
+@media (min-width: 1024px) { .hero-shade { background: linear-gradient(90deg, #0b0b0a 38%, rgba(11,11,10,.8) 47%, transparent 70%); } }
